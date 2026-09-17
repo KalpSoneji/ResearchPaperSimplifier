@@ -1,0 +1,13 @@
+spacy
+nltk
+scikit-learn
+gensim
+torch
+transformers
+fastapi
+uvicorn
+pydantic
+pymupdf4llm
+python-multipart
+streamlit
+requests
