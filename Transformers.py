@@ -122,6 +122,11 @@ def simplify_text(text):
     # Strip markdown formatting that confuses the T5 tokenizer
     # (e.g. **B**idirectional becomes Bidirectional)
     import re
+    # Strip HTML tags like <br> that PyMuPDF4LLM leaves in tables
+    text = re.sub(r'<[^>]+>', ' ', text)
+    # Strip malformed tags or leftovers
+    text = re.sub(r'br>', ' ', text)
+    # Strip markdown formatting that confuses the tokenizer
     text = re.sub(r'[*#_]', '', text)
     
     chunks = chunk_text(text)
