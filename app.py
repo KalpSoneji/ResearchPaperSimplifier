@@ -3,20 +3,16 @@ from pydantic import BaseModel
 import shutil
 import os
 import tempfile
-from module1_preprocessing import preprocess_text
-from module4_transformers import simplify_text, get_scibert_embeddings
-from module5_pdf_extraction import extract_pdf_to_markdown
+
+from Transformers import simplify_text, get_scibert_embeddings
+from PDF_Extraction import extract_pdf_to_markdown
 
 app = FastAPI(title="Academic Text Simplification API", version="1.0")
 
 class TextRequest(BaseModel):
     text: str
 
-class PreprocessResponse(BaseModel):
-    filtered_tokens: list
-    lemmas: list
-    pos_tags: list
-    entities: list
+
 
 class SimplifyResponse(BaseModel):
     original_text: str
@@ -26,16 +22,7 @@ class SimplifyResponse(BaseModel):
 def read_root():
     return {"message": "Welcome to the Academic Text Simplification API"}
 
-@app.post("/preprocess", response_model=PreprocessResponse)
-def api_preprocess(request: TextRequest):
-    if not request.text:
-        raise HTTPException(status_code=400, detail="Text cannot be empty")
-    
-    try:
-        result = preprocess_text(request.text)
-        return result
-    except Exception as e:
-         raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.post("/simplify", response_model=SimplifyResponse)
 def api_simplify(request: TextRequest):
