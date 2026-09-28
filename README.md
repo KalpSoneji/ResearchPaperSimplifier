@@ -14,11 +14,8 @@ An AI-powered tool that automatically extracts, chunks, and simplifies dense aca
 ```
 ├── app.py                         # FastAPI backend server and endpoints
 ├── frontend.py                    # Streamlit interactive UI
-├── module1_preprocessing.py       # (Optional) spaCy text preprocessing
-├── module2_classical_ml.py        # Classical ML baseline experiments
-├── module3_semantic_rep.py        # Semantic representations and embeddings
-├── module4_transformers.py        # T5 chunking, summarization, and table linearization
-├── module5_pdf_extraction.py      # PDF to Markdown extraction using PyMuPDF4LLM
+├── Transformers.py        # T5 chunking, summarization, and table linearization
+├── PDF_Extraction.py      # PDF to Markdown extraction using PyMuPDF4LLM
 ├── test_api.py                    # Script to test the API programmatically
 ├── requirements.txt               # Python dependencies
 ├── sample.pdf                     # Sample academic paper for testing
